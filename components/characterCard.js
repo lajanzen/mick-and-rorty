@@ -10,6 +10,9 @@ export default function createCharacterCard({
   location,
   episode,
 }) {
+  const firstEpisode = episode[0];
+  const firstEpisodeElement = createElement("p", {}, firstEpisode);
+
   const characterCardElement = createElement(
     "article",
     { className: styles.characterCard },
@@ -42,11 +45,15 @@ export default function createCharacterCard({
         ]),
         createElement("div", {}, [
           createElement("h3", {}, ["First seen in:"]),
-          createElement("p", {}, [episode[0]]),
+          firstEpisodeElement,
         ]),
       ]),
     ]
   );
+
+  fetch(firstEpisode)
+    .then((response) => response.json())
+    .then((body) => (firstEpisodeElement.textContent = body.name));
 
   return characterCardElement;
 }
