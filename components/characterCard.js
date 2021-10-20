@@ -3,12 +3,12 @@ import { createElement } from "../lib/elements";
 
 export default function createCharacterCard({
   name,
-  imageSrc,
-  characterLink,
+  image,
+  url,
   status,
-  race,
-  lastKnownLocation,
-  firstSeenIn,
+  species,
+  location,
+  episode,
 }) {
   const characterCardElement = createElement(
     "article",
@@ -17,14 +17,14 @@ export default function createCharacterCard({
       createElement("img", {
         className: styles.characterCard__image,
         alt: "",
-        src: imageSrc,
+        src: image,
       }),
       createElement("section", { className: styles.characterCard__info }, [
         createElement("div", {}, [
           createElement(
             "a",
             {
-              href: characterLink,
+              href: url,
             },
             [
               createElement("h2", { className: styles.characterCard__name }, [
@@ -33,16 +33,16 @@ export default function createCharacterCard({
             ]
           ),
           createElement("p", { className: styles.characterCard__status }, [
-            `${status} - ${race}`,
+            `${status} - ${species}`,
           ]),
         ]),
         createElement("div", {}, [
           createElement("h3", {}, ["Last known location:"]),
-          createElement("p", {}, [lastKnownLocation]),
+          createElement("p", {}, [location.name]),
         ]),
         createElement("div", {}, [
           createElement("h3", {}, ["First seen in:"]),
-          createElement("p", {}, [firstSeenIn]),
+          createElement("p", {}, [episode[0]]),
         ]),
       ]),
     ]
