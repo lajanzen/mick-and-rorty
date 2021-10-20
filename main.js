@@ -2,6 +2,37 @@ import createCharacterCard from "./components/characterCard";
 import { createElement } from "./lib/elements";
 import "./style.css";
 
+const characters = [
+  {
+    name: "Body Guard Morty",
+    imageSrc: "https://rickandmortyapi.com/api/character/avatar/44.jpeg",
+    status: "Dead",
+    race: "Human",
+    lastKnownLocation: "The Ricklandtis Mixup",
+    firstSeenIn: "Citadel of Ricks",
+  },
+  {
+    name: "Mr. Needful",
+    imageSrc: "https://rickandmortyapi.com/api/character/avatar/243.jpeg",
+    status: "Alive",
+    race: "Humanoid",
+    lastKnownLocation: "Earth (Replacement Dimension)",
+    firstSeenIn: "Something Ricked This Way Comes",
+  },
+  {
+    name: "Pencilvester",
+    imageSrc: "https://rickandmortyapi.com/api/character/avatar/259.jpeg",
+    status: "Dead",
+    race: "Alien",
+    lastKnownLocation: "Earth (Replacement Dimension)",
+    firstSeenIn: "Total Rickall",
+  },
+];
+
+const caracterCards = characters.map((character) =>
+  createCharacterCard(character)
+);
+
 function app() {
   const app = document.querySelector("#app");
 
@@ -18,20 +49,7 @@ function app() {
     ]
   );
 
-  const main = createElement("main", { className: "main" }, [
-    createCharacterCard({
-      imageSrc: "https://rickandmortyapi.com/api/character/avatar/44.jpeg",
-      name: "Body Guard Morty",
-    }),
-    createCharacterCard({
-      imageSrc: "https://rickandmortyapi.com/api/character/avatar/215.jpeg",
-      name: "Maximums Rickimus",
-    }),
-    createCharacterCard({
-      imageSrc: "https://rickandmortyapi.com/api/character/avatar/273.jpeg",
-      name: "Purge Planet Ruler",
-    }),
-  ]);
+  const main = createElement("main", { className: "main" }, caracterCards);
 
   app.append(header, main);
 }

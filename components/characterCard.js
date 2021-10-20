@@ -1,7 +1,15 @@
 import styles from "./characterCard.module.css";
 import { createElement } from "../lib/elements";
 
-export default function createCharacterCard({ name, imageSrc }) {
+export default function createCharacterCard({
+  name,
+  imageSrc,
+  characterLink,
+  status,
+  race,
+  lastKnownLocation,
+  firstSeenIn,
+}) {
   const characterCardElement = createElement(
     "article",
     { className: styles.characterCard },
@@ -16,7 +24,7 @@ export default function createCharacterCard({ name, imageSrc }) {
           createElement(
             "a",
             {
-              href: "https://rickandmortyapi.com/api/character/44",
+              href: characterLink,
             },
             [
               createElement("h2", { className: styles.characterCard__name }, [
@@ -25,24 +33,16 @@ export default function createCharacterCard({ name, imageSrc }) {
             ]
           ),
           createElement("p", { className: styles.characterCard__status }, [
-            "Dead - Human",
+            `${status} - ${race}`,
           ]),
         ]),
         createElement("div", {}, [
-          createElement("p", {}, ["Last known location:"]),
-          createElement(
-            "a",
-            { href: "https://rickandmortyapi.com/api/location/3" },
-            ["Citadel of Ricks"]
-          ),
+          createElement("h3", {}, ["Last known location:"]),
+          createElement("p", {}, [lastKnownLocation]),
         ]),
         createElement("div", {}, [
-          createElement("p", {}, ["First seen in:"]),
-          createElement(
-            "a",
-            { href: "https://rickandmortyapi.com/api/episode/28" },
-            ["The Ricklandtis Mixup"]
-          ),
+          createElement("h3", {}, ["First seen in:"]),
+          createElement("p", {}, [firstSeenIn]),
         ]),
       ]),
     ]
