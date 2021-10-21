@@ -1,0 +1,28 @@
+.characterCard {
+  display: flex;
+  flex-wrap: wrap;
+  column-gap: 1em;
+  background-color: var(--color-background-card);
+  border-radius: var(--border-radius);
+  width: 38em;
+}
+
+.characterCard p {
+  color: #999;
+  margin: 0;
+}
+
+.characterCard a {
+  color: var(--color-main-text);
+}
+
+.characterCard__image {
+  height: 14em;
+  border-top-left-radius: var(--border-radius);
+  border-bottom-left-radius: var(--border-radius);
+}
+
+.characterCard__info {
+  display: grid;
+  padding: 1em;
+}
