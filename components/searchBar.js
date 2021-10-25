@@ -1,19 +1,21 @@
 import { createElement } from "../lib/elements";
 
 export default function createSearchElement(onSubmit) {
+  let timeoutId;
   const textInput = createElement("input", {
     placeholder: "Search character",
-  });
-  const searchBar = createElement(
-    "form",
-    {
-      onsubmit: (event) => {
-        event.preventDefault();
+    // DEBOUNCE: //
+    oninput: () => {
+      clearTimeout(timeoutId);
+      timeoutId = setTimeout(() => {
         onSubmit(textInput.value);
-      },
+      }, 300);
     },
-    [textInput, createElement("button", {}, ["Search"])]
-  );
+  });
+  const searchBar = createElement("form", {}, [
+    textInput,
+    createElement("button", {}, ["Search"]),
+  ]);
 
   return searchBar;
 }
